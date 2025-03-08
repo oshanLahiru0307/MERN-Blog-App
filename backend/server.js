@@ -2,6 +2,7 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
+const authRoutes = require('./router/authRoutes')
 
 
 //middleware...
@@ -10,6 +11,9 @@ app.use((req,res,next)=> {
     console.log(req.path)
     next()
 })
+
+//routes...
+app.use('/api/authUser', authRoutes )
 
 //connect mongodb...
 mongoose.connect(process.env.mongo_uri)
