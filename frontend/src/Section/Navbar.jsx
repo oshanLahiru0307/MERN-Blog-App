@@ -2,12 +2,22 @@ import React from "react";
 import { Layout, Button, Typography } from "antd";
 import { BellOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import logo from '../assets/airbnb_1724634.png'
-const { Title, Text } = Typography;
+import logo from '../assets/airbnb_1724634.png';
+import state from '../State/state';
+import { useSnapshot } from "valtio";
 
+const { Title } = Typography;
 const { Header } = Layout;
 
 const Navbar = () => {
+    const snap = useSnapshot(state);
+    const user = snap.currentUser;
+    console.log(user);
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+    };
+
     return (
         <Header
             style={{
@@ -20,22 +30,13 @@ const Navbar = () => {
             }}
         >
             {/* Left - Logo */}
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    justifyContent: "center"
-                }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <Link to="/" style={{ lineHeight: "0" }}>
                     <img width="40px" height="40px" src={logo} alt="logo" />
                 </Link>
                 <Link to="/" style={{ lineHeight: "0" }}>
-                    <Title level={3} style={{ color: "#1890ff", textAlign: "center", margin: "0" }}>
-                        Hexa Blog
-                    </Title>
+                    <Title level={3} style={{ color: "#1890ff", margin: "0" }}>Hexa Blog</Title>
                 </Link>
-
             </div>
 
             {/* Center - Navigation Menu */}
@@ -46,24 +47,30 @@ const Navbar = () => {
                     listStyle: "none",
                     padding: "0",
                     margin: "0",
-                    fontSize: "16px",
+                    fontSize: "15px",
                     fontWeight: "500",
                     fontFamily: "Arial, sans-serif"
                 }}>
-                    <li ><Link to='/' style={{ color: '#727D73' }}>Home</Link></li>
-                    <li><Link to='/login' style={{ color: '#727D73' }}>About</Link></li>
-                    <li><Link to='/register' style={{ color: '#727D73' }}>Contact</Link></li>
+                    <li><Link to="/" style={{ color: '#727D73' }}>Home</Link></li>
+                    <li><Link to="/about" style={{ color: '#727D73' }}>About</Link></li>
+                    <li><Link to="/contact" style={{ color: '#727D73' }}>Contact</Link></li>
+                    {user && <li><Link to="/dashboard" style={{ color: '#727D73' }}>New Post</Link></li>}
                 </ul>
             </div>
 
-            {/* Right - Notifications & Sign In */}
+            {/* Right - Notifications & Sign In/Sign Out */}
             <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
                 {/* Notification Icon */}
-                <BellOutlined style={{ fontSize: "20px", cursor: "pointer" }} />
-                {/* Sign In Button */}
-                <Link to="/login">
-                    <Button type="primary" style={{ borderRadius: '25px', width: '100px', boxShadow: "0 5px 20px rgba(54, 80, 255, 0.74)", }}>Sign In</Button>
-                </Link>
+                {user && <BellOutlined style={{ fontSize: "20px", cursor: "pointer" }} />}
+                
+                {/* Conditional Buttons */}
+                {!user ? (
+                    <Link to="/login">
+                        <Button type="primary" style={{ borderRadius: '25px', width: '100px', boxShadow: "0 5px 20px rgba(54, 80, 255, 0.74)" }}>Sign In</Button>
+                    </Link>
+                ) : (
+                    <Button type="primary" onClick={handleLogout} style={{ borderRadius: '25px', width: '100px', boxShadow: "0 5px 20px rgba(54, 80, 255, 0.74)" }}>Logout</Button>
+                )}
             </div>
         </Header>
     );
