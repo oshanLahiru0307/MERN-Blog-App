@@ -46,7 +46,7 @@ const Register = () => {
                     background: "white",
                 }}
             >
-                <Row>
+                <Row style={{ height: "600px" }}>
                     {/* Left Side - Image */}
                     <Col span={12} style={{ background: "#1890ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <img

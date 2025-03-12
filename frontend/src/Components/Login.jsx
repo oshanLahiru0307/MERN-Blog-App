@@ -42,15 +42,13 @@ const Login = () => {
       <div
         style={{
           width: '1200px',
-          height: '490px',
           padding: "0",
           borderRadius: "10px",
           overflow: "hidden",
           background: "white",
         }}
       >
-        <Row 
-        style={{}}>
+        <Row>
           {/* Left Side - Image */}
           <Col span={12} style={{ background: "#1890ff", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
             <img
