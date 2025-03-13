@@ -5,24 +5,29 @@ import { Link } from "react-router-dom";
 import logo from '../assets/airbnb_1724634.png';
 import state from '../State/state';
 import { useSnapshot } from "valtio";
+import { useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 const { Header } = Layout;
 
+
 const Navbar = () => {
+    const navigate = useNavigate()
     const snap = useSnapshot(state);
     const user = snap.currentUser;
     console.log(user);
+
     const handleLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
+        navigate("/login");
     };
 
     return (
         <Header
             style={{
                 background: "#fff",
-                padding: "0 40px",
+                padding: "20px 0",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
