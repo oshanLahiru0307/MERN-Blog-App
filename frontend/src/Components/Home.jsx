@@ -1,8 +1,11 @@
 import React from 'react'
 import Navbar from '../Section/Navbar'
-import { Input } from 'antd'
+import MainPost from '../Section/MainPost';
+import { Flex, Input } from 'antd'
 import { RiSearchLine } from "react-icons/ri";
 import { LiaAirbnb } from "react-icons/lia"
+import Categories from '../Section/Categories';
+import SubPost from '../Section/subPost';
 
 const Home = () => {
 
@@ -25,7 +28,8 @@ const Home = () => {
             color: 'white',
             fontSize: '30px',
             paddingTop: '50px',
-          }}>Blog</h1>
+          }}>Welcome to 
+          Hexa Blog</h1>
       </div>
       <div style={{
         width: '600px',
@@ -43,11 +47,24 @@ const Home = () => {
       }}>
         <RiSearchLine />
         <Input
-          placeholder='Search here'
+          placeholder='Search here. . .'
           size='large'
           bordered={false}
         />
       </div>
+      <Categories/>
+      <MainPost/>
+      <Flex 
+      style={{
+        marginTop: "100px",
+      }} horizontal gap="50px" wrap justify='space-between' >
+      <SubPost/>
+      <SubPost/>
+      <SubPost/>
+      <SubPost/>
+      <SubPost/>
+      <SubPost/>
+      </Flex>
     </div>
   )
 }

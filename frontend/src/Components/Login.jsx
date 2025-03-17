@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, message, Button, Checkbox, Form, Input, Typography, Row, Col } from "antd";
 import authController from "../Services/authController";
-
+import state from "../State/state";
 
 const { Title, Text } = Typography;
 
@@ -15,9 +15,10 @@ const Login = () => {
     try {
       const response = await authController.userLogin(values);
       if (response) {
-        message.success("Login successful");
         localStorage.setItem("token", response.token);
         localStorage.setItem("user", JSON.stringify(response.user));
+        state.currentUser = response.user
+        state.token = response.token
         navigate("/");
       } else {
         message.error("Login failed");

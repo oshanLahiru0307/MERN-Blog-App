@@ -1,11 +1,11 @@
-import {proxy} from 'valtio'
+import { proxy } from 'valtio';
 
-const user = JSON.parse(localStorage.getItem('user'))
-const token = localStorage.getItem('token')
+const user = JSON.parse(localStorage.getItem('user'));
+const token = localStorage.getItem('token');
 
 const state = proxy({
-    currentUser:user,
-    token:token
-})
+    currentUser: user || null,
+    token: token || null
+});
 
-export default state
+export default state;
