@@ -5,6 +5,7 @@ const cors = require('cors')
 const app = express()
 const authRoutes = require('./router/authRoutes')
 const userRoutes = require('./router/userRoutes')
+
 //const {verify_token} = require('./middleware/authMiddleware')
 
 
@@ -15,6 +16,8 @@ app.use((req,res,next)=> {
     console.log(req.path)
     next()
 })
+
+
 
 //routes...
 app.use('/api/authUser', authRoutes )

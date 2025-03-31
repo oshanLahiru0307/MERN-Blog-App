@@ -21,6 +21,9 @@ const blogUserSchema = new Schema({
     address: {
         type: String,
         require: true
+    },
+    profilePhoto: {
+        type: String
     }
 
 }, {timestap: true})
