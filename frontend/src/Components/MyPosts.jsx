@@ -1,28 +1,23 @@
 import React from 'react'
 import Navbar from '../Section/Navbar'
-import MainPost from '../Section/MainPost';
 import { Flex, Input } from 'antd'
 import { RiSearchLine } from "react-icons/ri";
-import { LiaAirbnb } from "react-icons/lia"
-import Categories from '../Section/Categories';
-import SubPost from '../Section/subPost';
-import BlogFooter from '../Section/BlogFooter';
-import Img1 from '../assets/img1.jpg';
-
-const Home = () => {
+import MyPost from '../Section/myPost';
 
 
+
+const MyPosts = () => {
   return (
     <div
     style={{
       margin: '20px 50px'
     }}>
-      <Navbar />
+        <Navbar />
       <div
         style={{
           width: '100%',
           height: '150px',
-          background: `url(${Img1})`,
+          background: 'url("https://img.freepik.com/free-vector/abstract-classic-blue-screensaver_23-2148421853.jpg?t=st=1741834927~exp=1741838527~hmac=61a8e7573474a1e04ab9a2e5621306882cfb9461ab837aa5a1979780e4c75a45&w=1380")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           borderRadius: '20px',
@@ -57,27 +52,23 @@ const Home = () => {
           bordered={false}
         />
       </div>
-      <MainPost/>
-      <Categories/>
-      <Flex 
+      <Flex
       style={{
-        marginTop: "50px",
-        marginBottom:"100px"
-      }} horizontal gap="50px" wrap justify='flex-start' >
-      <SubPost/>
-      <SubPost/>
-      <SubPost/>
-      <SubPost/>
-      <SubPost/>
-      <SubPost/>
-      <SubPost/>
-      <SubPost/>
-      <SubPost/>
-      <SubPost/>
+        marginTop:'120px',
+        marginBottom:'40px',
+        marginLeft:'auto',
+        marginRight:'auto'
+      }}
+      horizontal gap="55px" wrap justify='flex-start'>
+        <MyPost/>
+        <MyPost/>
+        <MyPost/>
+        <MyPost/>
+        <MyPost/>
+        <MyPost/>
       </Flex>
-      <BlogFooter/>
     </div>
   )
 }
 
-export default Home  
+export default MyPosts

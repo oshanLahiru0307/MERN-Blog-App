@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Card, message, Button, Checkbox, Form, Input, Typography, Row, Col } from "antd";
 import authController from "../Services/authController";
 import state from "../State/state";
+import MainBack from '../assets/main_back.jpg'
+import CardBack from '../assets/card_back.jpg'
 
 const { Title, Text } = Typography;
 
@@ -32,12 +34,13 @@ const Login = () => {
 
   return (
     <div
+    className="Login"
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
-        background: 'url("https://img.freepik.com/free-vector/nice-colors-background-with-fluid-wavy-shapes_1017-33502.jpg?t=st=1741834163~exp=1741837763~hmac=2f27fe9bc561dff9ec669090ec540404634e2fdcf93e3b5fd853e72d56a92164&w=1800")',
+        background: `url(${MainBack})`,
         backgroundSize: "cover",
       }}
     >
@@ -54,7 +57,7 @@ const Login = () => {
           {/* Left Side - Image */}
           <Col span={12} style={{ background: "#1890ff", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
             <img
-              src="https://img.freepik.com/free-vector/gradient-minimalist-background_23-2150012324.jpg?t=st=1741834024~exp=1741837624~hmac=3423ae7e440d78038a5da7d2239dd1aebe83d25535d0c9f5d686ca5922f44009&w=1380"
+              src={CardBack}
               alt="Login"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />

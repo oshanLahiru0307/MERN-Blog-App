@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, message, Button, Form, Input, Typography, Row, Col } from "antd";
 import authController from "../Services/authController";
+import MainBack from '../assets/main_back.jpg'
+import CardBack from '../assets/card_back.jpg'
 
 const { Title, Text } = Typography;
 
@@ -33,7 +35,7 @@ const Register = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 height: "100vh",
-                background: 'url("https://img.freepik.com/free-vector/abstract-smooth-gradient-background-with-blur-effect_1017-51593.jpg?t=st=1741834157~exp=1741837757~hmac=24549bec4a01c1102655cac89671bb08fc044befe571385a5e9d522289f97b38&w=1800")',
+                background: `url(${MainBack})`,
                 backgroundSize: "cover",
             }}
         >
@@ -50,7 +52,7 @@ const Register = () => {
                     {/* Left Side - Image */}
                     <Col span={12} style={{ background: "#1890ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <img
-                            src="https://img.freepik.com/free-vector/gradient-minimalist-background_23-2150012324.jpg?t=st=1741834024~exp=1741837624~hmac=3423ae7e440d78038a5da7d2239dd1aebe83d25535d0c9f5d686ca5922f44009&w=1380"
+                            src={CardBack}
                             alt="Register"
                             style={{ width: "100%", height: "100%", objectFit: "cover", position: "relative" }}
                         />

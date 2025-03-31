@@ -13,7 +13,7 @@ const Categories = () => {
 
     return (
         <div style={{
-            margin: '70px 0 50px',
+            margin: '40px 0',
             padding: '30px',
             display: 'flex',
             justifyContent: 'center',

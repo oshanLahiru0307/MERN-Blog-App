@@ -1,16 +1,22 @@
 import React from 'react'
-import { Flex, Typography, Avatar } from 'antd'
+import { Flex, Typography, Avatar, Button } from 'antd'
+import { BiEdit } from "react-icons/bi";
+import { MdDeleteForever } from "react-icons/md";
+
 const { Title, Link, Text } = Typography
 
 
-const subPost = () => {
+
+const myPost = () => {
   return (
     <Flex
       vertical
+      style={{
+        marginTop:'10px'
+      }}
       >
       <div
         style={{
-          margin:'20px 8px',
           width: '300px',
           height: '200px',
           background: 'url("https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
@@ -55,9 +61,30 @@ const subPost = () => {
             color: '#696969'
           }}>13-03-2025</text>
         </div>
+          <Button type='default' style={{
+            border:'none',
+            padding:'5px',
+            boxShadow:'none'
+          }}>
+            <BiEdit style={{
+            height:'20px',
+            width:"20px"
+        }}/></Button>
+        <Button type='default' danger
+        style={{
+            border:'none',
+            padding:'5px',
+            marginLeft:'10px',
+            boxShadow:'none'
+        }}>
+        <MdDeleteForever style={{
+            height:'20px',
+            width:"20px"
+        }} />
+        </Button>
       </div>
     </Flex>
   )
 }
 
-export default subPost
+export default myPost

@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Button, Typography } from "antd";
+import { Layout, Button, Typography, Avatar } from "antd";
 import { BellOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import logo from '../assets/airbnb_1724634.png';
@@ -59,7 +59,9 @@ const Navbar = () => {
                     <li><Link to="/" style={{ color: '#727D73' }}>Home</Link></li>
                     <li><Link to="/about" style={{ color: '#727D73' }}>About</Link></li>
                     <li><Link to="/contact" style={{ color: '#727D73' }}>Contact</Link></li>
-                    {user && <li><Link to="/dashboard" style={{ color: '#727D73' }}>New Post</Link></li>}
+                    <li><Link to="/about" style={{ color: '#727D73' }}>About Us</Link></li>
+                    {user && <li><Link to="/myposts" style={{ color: '#727D73' }}>My Posts</Link></li>}
+                    {user && <li><Link to="/newPost" style={{ color: '#727D73' }}>New Post</Link></li>}
                 </ul>
             </div>
 
@@ -67,6 +69,12 @@ const Navbar = () => {
             <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
                 {/* Notification Icon */}
                 {user && <BellOutlined style={{ fontSize: "20px", cursor: "pointer" }} />}
+
+                {user && <Avatar
+                onClick={navigate("/myProfile")}
+                          style={{
+                          }} size={32}
+                          src={<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="avatar" />} />}
                 
                 {/* Conditional Buttons */}
                 {!user ? (

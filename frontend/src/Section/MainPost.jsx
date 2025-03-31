@@ -7,6 +7,7 @@ const MainPost = () => {
     return (
         <div
             style={{
+                marginTop:'120px',
                 padding: '0',
                 display: 'flex',
                 alignItems: 'start'
