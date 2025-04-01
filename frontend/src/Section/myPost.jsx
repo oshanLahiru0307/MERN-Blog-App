@@ -2,12 +2,16 @@ import React from 'react'
 import { Flex, Typography, Avatar, Button } from 'antd'
 import { BiEdit } from "react-icons/bi";
 import { MdDeleteForever } from "react-icons/md";
+import { useSnapshot } from 'valtio';
+import state from '../State/state';
 
 const { Title, Link, Text } = Typography
 
+const MyPost = () => {
 
+  const user_State = useSnapshot(state)
+  const user = user_State.currentUser
 
-const myPost = () => {
   return (
     <Flex
       vertical
@@ -52,7 +56,7 @@ const myPost = () => {
         <Avatar
           style={{
           }} size={64}
-          src={<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="avatar" />} />
+          src={user.profilePhoto ? `http://localhost:4000/uploads/${user.profilePhoto}` : "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"} alt="avatar" />
         <div style={{ margin: '5px 15px' }}>
           <h4 style={{ margin: '0' }}>
             Anna Powlowicz
@@ -87,4 +91,4 @@ const myPost = () => {
   )
 }
 
-export default myPost
+export default MyPost

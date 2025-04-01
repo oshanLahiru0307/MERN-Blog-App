@@ -21,6 +21,7 @@ app.use((req,res,next)=> {
 //routes...
 app.use('/api/authUser', authRoutes )
 //app.use('/api/users', userRoutes)
+app.use('/api/User', userRoutes )
 
 //connect mongodb...
 mongoose.connect(process.env.mongo_uri)

@@ -2,8 +2,9 @@ import React from 'react'
 import Navbar from '../Section/Navbar'
 import { Flex, Input } from 'antd'
 import { RiSearchLine } from "react-icons/ri";
-import MyPost from '../Section/myPost';
-
+import {useState, useEffect} from 'react'
+import MyPost from '../Section/myPost'
+import Img1 from '../assets/img1.jpg';
 
 
 const MyPosts = () => {
@@ -17,7 +18,7 @@ const MyPosts = () => {
         style={{
           width: '100%',
           height: '150px',
-          background: 'url("https://img.freepik.com/free-vector/abstract-classic-blue-screensaver_23-2148421853.jpg?t=st=1741834927~exp=1741838527~hmac=61a8e7573474a1e04ab9a2e5621306882cfb9461ab837aa5a1979780e4c75a45&w=1380")',
+          background: `url(${Img1})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           borderRadius: '20px',
