@@ -21,7 +21,7 @@ app.use((req,res,next)=> {
 
 //routes...
 app.use('/api/authUser', authRoutes )
-app.use('/api/User', userRoutes )
+app.use('/api/user', userRoutes )
 app.use('/api/post', postRoutes )
 
 

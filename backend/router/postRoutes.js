@@ -9,18 +9,18 @@ const {
 } = require('../controller/postController')
 
 //get all posts
-router.get('getAllPosts', getAllPost)
+router.get('/', getAllPost)
 
 //get single post
-router.get('getSinglePost', getSinglePost)
+router.get('/:id', getSinglePost)
 
 //create new post
 router.post('createPost', createPost)
 
 //update post
-router.patch('updatePost', updatePost)
+router.patch('/:id', updatePost)
 
 //delete post
-router.delete('deletePost', deletePost)
+router.delete('/:id', deletePost)
 
 module.exports = router

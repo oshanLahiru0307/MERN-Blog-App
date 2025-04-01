@@ -8,16 +8,16 @@ const {
 } = require('../controller/userController')
 
 //get all users
-router.get('/getAllUsers', getAllUsers)
+router.get('/', getAllUsers)
 
 //get a single user by id
-router.get('/getSingleUser', getUserById)
+router.get('/:id', getUserById)
 
 //update user
-router.patch('/updateUser', updateUser)
+router.patch('/:id', updateUser)
 
 //delete user
-router.delete('/deleteUser', deleteUser)
+router.delete('/:id', deleteUser)
 
 
 module.exports = router

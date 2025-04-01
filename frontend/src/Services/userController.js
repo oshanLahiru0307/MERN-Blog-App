@@ -1,52 +1,41 @@
 import axios from 'axios'
-import { patch } from '../../../backend/router/postRoutes'
-
-const BASE_URL = 'http://localhost:4000/user'
+const BASE_URL = 'http://localhost:4000/api/user'
 
 class UserController {
 
-    static async getAllPosts(){
+    static async getAllUsers(){
         try{
             const response = await axios.get(BASE_URL)
             console.log(response.data)
         }catch(error){
-            console.log('error while fetching data', error)
+            console.log('error while fetching users', error)
         }
     }
 
-    static async getSinglePost(postId){
+    static async getSingleUser(userId){
         try{
-            const response = await axios.get(`${BASE_URL}/${postId}`)
+            const response = await axios.get(`${BASE_URL}/${userId}`)
             console.log(response.data)
         }catch(error){
-            console.log('error while fetching the post', error)
+            console.log('error while fetching user', error)
         }
     }
 
-    static async createPost(data){
+    static async updateUser(userId, data){
         try{
-            const response = await axios.create(BASE_URL, data)
+            const response = await axios.patch(`${BASE_URL}/${userId}`, data)
             console.log(response.data)
         }catch(error){
-            console.log('error while creating post', error)
+            console.log('error while updating user', error)
         }
     }
 
-    static async updatePost(postId, data){
+    static async deleteUser(userId){
         try{
-            const response = await axios.patch(`${BASE_URL}/${postId}`, data)
+            const response = await axios.delete(`${BASE_URL}/${userId}`)
             console.log(response.data)
         }catch(error){
-            console.log('error while updating data', error)
-        }
-    }
-
-    static async deletePost(postId){
-        try{
-            const response = await axios.delete(`${BASE_URL}/${postId}`)
-            console.log(response.data)
-        }catch(error){
-            console.log('error while deleting post',error)
+            console.log('error while deleting user', error)
         }
     }
 
