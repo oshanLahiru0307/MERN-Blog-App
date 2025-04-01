@@ -5,6 +5,7 @@ const cors = require('cors')
 const app = express()
 const authRoutes = require('./router/authRoutes')
 const userRoutes = require('./router/userRoutes')
+const postRoutes = require('./router/postRoutes')
 
 //const {verify_token} = require('./middleware/authMiddleware')
 
@@ -20,8 +21,9 @@ app.use((req,res,next)=> {
 
 //routes...
 app.use('/api/authUser', authRoutes )
-//app.use('/api/users', userRoutes)
 app.use('/api/User', userRoutes )
+app.use('/api/post', postRoutes )
+
 
 //connect mongodb...
 mongoose.connect(process.env.mongo_uri)
