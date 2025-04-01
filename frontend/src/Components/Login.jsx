@@ -21,6 +21,7 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(response.user));
         state.currentUser = response.user
         state.token = response.token
+        console.log(state.currentUser)
         navigate("/");
       } else {
         message.error("Login failed");
