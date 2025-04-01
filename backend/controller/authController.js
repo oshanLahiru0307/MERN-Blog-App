@@ -1,39 +1,39 @@
 const userModel = require('../model/blogUserModel') // Corrected typo
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const multer = require('multer')
-const path = require('path');
 
-// Configure multer storage
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'uploads/'); // Store uploaded files in the 'uploads' directory
-    },
-    filename: (req, file, cb) => {
-      cb(null, Date.now() + path.extname(file.originalname)); // Rename the file
-    },
-  });
 
-  const upload = multer({ storage: storage });
 
 const register = async (req, res) => {
-    try {
-        const { name, email, password, contact, address } = req.body
-        const userExist = await userModel.findOne({ email: email }) 
-        if (userExist) {
-            return res.status(400).json({ message: "Email is already registered" })
-        }
-        const hashedPassword = await bcrypt.hash(password, 12) 
-        const profilePhoto = req.file ? req.file.filename : null;
-
-        const user = await userModel.create({ name, email, password: hashedPassword, contact, address, profilePhoto: profilePhoto })
-        const userObj = user.toObject()
-        delete userObj.password 
-        res.status(201).json(userObj)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
+  try {
+    const { name, email, password, contact, address } = req.body;
+    const userExist = await userModel.findOne({ email: email });
+    if (userExist) {
+      return res.status(400).json({ message: 'Email is already registered' });
     }
-}
+    const hashedPassword = await bcrypt.hash(password, 12);
+    let profilePhoto = null;
+
+    if (req.file) {
+      profilePhoto = req.file.filename;
+    }
+
+    const user = await userModel.create({
+      name,
+      email,
+      password: hashedPassword,
+      contact,
+      address,
+      profilePhoto: profilePhoto,
+    });
+    const userObj = user.toObject();
+    delete userObj.password;
+    res.status(201).json(userObj);
+  } catch (error) {
+    console.error("Error in register function:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
 const login = async (req, res) => {
     const { email, password } = req.body
@@ -57,4 +57,5 @@ const login = async (req, res) => {
 
 
 
-module.exports = { register, login, upload}
+
+module.exports = { register, login}

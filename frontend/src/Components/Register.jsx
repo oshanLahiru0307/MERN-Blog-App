@@ -11,14 +11,16 @@ import {
   Col,
   Upload,
 } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { UploadOutlined,PlusOutlined } from "@ant-design/icons";
 import authController from "../Services/authController";
 import MainBack from "../assets/main_back.jpg";
 import CardBack from "../assets/card_back.jpg";
 
 const { Title, Text } = Typography;
 
+
 const Register = () => {
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [fileList, setFileList] = useState([]);
@@ -26,34 +28,40 @@ const Register = () => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await authController.userRegister({
-        ...values,
-        profilePhoto: fileList[0]?.originFileObj,
-      });
+      const formData = new FormData();
+      formData.append('name', values.name);
+      formData.append('email', values.email);
+      formData.append('contact', values.contact);
+      formData.append('password', values.password);
+      if (fileList.length > 0) {
+        formData.append('profilePhoto', fileList[0].originFileObj);
+      }
+      const response = await authController.userRegister(formData);
+
       if (response) {
-        message.success("Registration successful!");
-        navigate("/login");
+        message.success('Registration successful!');
+        navigate('/login');
       } else {
-        message.error("Registration failed");
+        message.error('Registration failed');
       }
     } catch (error) {
-      message.error("Error registering. Try again!");
+      message.error('Error registering. Try again!');
     } finally {
       setLoading(false);
     }
   };
 
   const uploadProps = {
-    listType: "picture",
-    fileList: fileList,
+    listType: 'picture',
+    fileList,
     beforeUpload: (file) => {
-      const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
       if (!isJpgOrPng) {
-        message.error("You can only upload JPG/PNG file!");
+        message.error('You can only upload JPG/PNG file!');
       }
       const isLt2M = file.size / 1024 / 1024 < 2;
       if (!isLt2M) {
-        message.error("Image must smaller than 2MB!");
+        message.error('Image must smaller than 2MB!');
       }
       return isJpgOrPng && isLt2M;
     },
@@ -120,10 +128,10 @@ const Register = () => {
 
           {/* Right Side - Form */}
           <Col span={12} style={{
-              padding: "20px",
-              overflowY: "auto", // Make the content scrollable vertically
-              maxHeight: "550px", // Adjust as needed
-            }}>
+            padding: "20px",
+            overflowY: "auto", // Make the content scrollable vertically
+            maxHeight: "550px", // Adjust as needed
+          }}>
             <Title level={3} style={{ color: "#1890ff", textAlign: "center" }}>
               Create an Account
             </Title>
@@ -152,7 +160,7 @@ const Register = () => {
 
               <Form.Item
                 label="Phone Number"
-                name="phone"
+                name="contact"
                 rules={[{ required: true, message: "Please enter your phone number!" }]}
               >
                 <Input />

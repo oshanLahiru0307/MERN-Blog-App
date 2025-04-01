@@ -12,12 +12,11 @@ const userRoutes = require('./router/userRoutes')
 //middleware...
 app.use(cors())
 app.use(express.json())
+app.use('/uploads', express.static('uploads'));
 app.use((req,res,next)=> {
     console.log(req.path)
     next()
 })
-
-
 
 //routes...
 app.use('/api/authUser', authRoutes )
