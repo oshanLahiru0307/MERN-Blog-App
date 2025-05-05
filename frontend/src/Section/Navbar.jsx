@@ -44,20 +44,20 @@ const Navbar = () => {
             {/* Center - Navigation Menu */}
             <div>
                 <ul
+                    className="navbar-ul"
                     style={{
                         display: "flex",
                         gap: "20px",
                         listStyle: "none",
-                        padding: "0",
                         margin: "0",
                         fontSize: "15px",
                         fontWeight: "500",
                         fontFamily: "Arial, sans-serif",
+                        width:'100%'
                     }}
                 >
                     <li><Link to="/" style={{ color: '#727D73' }}>Home</Link></li>
                     <li><Link to="/about" style={{ color: '#727D73' }}>About</Link></li>
-                    <li><Link to="/contact" style={{ color: '#727D73' }}>Contact</Link></li>
                     <li><Link to="/about" style={{ color: '#727D73' }}>About Us</Link></li>
                     {user && <li><Link to="/myposts" style={{ color: '#727D73' }}>My Posts</Link></li>}
                     {user && <li><Link to="/newPost" style={{ color: '#727D73' }}>New Post</Link></li>}
